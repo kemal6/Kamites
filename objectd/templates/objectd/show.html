@@ -1,0 +1,97 @@
+{% extends 'layouts/base.html'%}
+{% block title%}
+        Objet|{{obj.title}}
+{% endblock %}
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center h-40 w-65 border">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEcCjN__Ma_HJ_JY2PeMV6z8hqjFDD8fkpzw&usqp=CAU" class="img-fluid" style="object-fit: cover;">
+</div>
+
+
+<div class="d-flex" style="margin-top: 1cm;">
+    <div class="col-6 scrollbar scrollbar-success text-justify" style="color: black; font-weight: normal; text-align:left; ">
+        <div class="overflow-auto text-justify" style="height: 250px; direction: rtl;unicode-bidi: bidi-override;scrollbar-color: #29502c orange;scrollbar-width: thin; margin-left: 1cm;" >
+         <center style="text-align: justify;">
+            <p style="text-align: justify;">
+             
+                <article>
+                    <span>
+                        <h5 style="color: rgb(197, 132, 12);">#{{obj.id}} -{{obj.Nom}}</h5>
+                        <br>
+                    </span>
+                    <div id="img-descp">
+                        <div id="descrp">
+                            <p>{{obj.Description}}</p>
+                            <div id="desphy">
+                                <table></table>
+                            </div>
+                        </div>    
+                    </div>
+                </article>
+            </p>
+         </center>
+        </div>
+    </div>
+    <div class="col-6" style="margin-left:2cm; border-left-width: 5px;    border-left-color: whitesmoke;  color:#29502c ;">
+    
+    <div id="formulaire" class="d-flex">
+        <div id="imp" style="margin-right: 1cm;">
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <td> Pays</td>
+                    <td> Ethnie </td>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>{{obj.Pays}}</td>
+                        <td>{{obj.Ethnie}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <td> Matériaux </td>
+                    <td> Poids </td>
+                </thead>
+                <tbody>
+                    
+                    <tr style="width:3cm;">
+                        <td style="width:4.5cm;">{{obj.Materiaux}}</td>
+                        <td>{{obj.Poids}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <td> Hauteur_cm </td>
+                    <td> Largeur_cm </td>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>{{obj.Hauteur_cm}}</td>
+                        <td>{{obj.Largeur_cm}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+        </div>
+        <div style="width: 250px; height: 260px;">
+            <img src="{{obj.img}}" alt="" class="w-100 h-100 object-fit-cover" sizes="100" srcset="">
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+<h6><a href="{% url 'objectd:index' %}"> </a></h6>
+{% endblock %}

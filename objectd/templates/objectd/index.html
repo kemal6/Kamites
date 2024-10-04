@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html'%}
+
+{% block Nom%}
+       Objets|Kamites
+{% endblock %}
+{% block content %}
+<h1>Objets reconnus dans l'image ({{ objs|length}})</h1>
+    {% for obj in objs %}
+    <article>
+        <span>
+            <h2>#{{obj.id}} - <a href="{% url 'objectd:show' id=obj.id%}">{{obj.Nom | upper}}</a></h2>
+            <img src="{{obj.img}}" alt="" sizes="100" srcset="">
+        </span>
+        <p>{{obj.Description|truncatewords:1}}</p>
+
+        <p><a href="{% url 'objectd:show' id=obj.id%}">Lire la suite</a></p>
+    </article>
+    {% if not forloop.last %}
+    <hr>
+
+    {% endif %}
+
+    {% empty %}
+        Sorry Aucun objets reconnus...
+    {% endfor %}
+{% endblock %}

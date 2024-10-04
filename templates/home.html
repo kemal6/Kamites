@@ -1,0 +1,165 @@
+{% extends 'layouts/base.html'%}
+{% block title%}
+        Homepage|Kamites
+{% endblock %}
+{% block content %}
+
+    <div class="d-flex align-items-center justify-content-center h-40 w-65 border">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEcCjN__Ma_HJ_JY2PeMV6z8hqjFDD8fkpzw&usqp=CAU" class="img-fluid" style="object-fit: cover;">
+    </div>
+
+{% if prem %}
+    <div class="d-flex" style="margin-top: 1cm; margin-left:1cm ; text-align: justify;">
+        <div class="col-6" style="color: black; font-weight: normal; ">
+            <p>
+            <span style="color: #39683d; font-weight: bold; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Kamites</span> 
+                est une application qui promeut la culture Africaine à travers l'identification et l'édification sur les outils traditionnels africains.
+            </p>
+            <p>
+                lo
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem dignissimos corrupti inventore distinctio eius minima fugiat exercitationem quibusdam sed, unde quod, enim sequi vitae, repellat nobis nulla. Quisquam, aspernatur numquam?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo corporis deleniti eum dolore esse ullam repudiandae dignissimos, atque, eaque at tenetur. Quia ipsa sit magni odio maxime ratione unde cum!
+            </p>
+        </div>
+        <div class="col-6" style="margin-left:2cm; border-left-width: 5px;    border-left-color: whitesmoke;  color:#29502c ;">
+        <h2>Sélectionnez une image</h2>
+        <br>
+        <div id="formulaire">
+            <form method="post" enctype="multipart/form-data" style="color: black;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="Envoyer">
+            </form>
+        </div>
+        </div>
+    </div>
+{% else %}
+  
+
+{% endif %}
+
+
+
+
+{% if founded %}
+
+
+<div class="d-flex" style="margin-top: 1cm;  text-align: justify;">
+    <div class="col-6 scrollbar scrollbar-success text-justify" style="color: black; font-weight: normal; text-align:left; ">
+        <div class="overflow-auto text-justify" style="height: 250px; direction: rtl;unicode-bidi: bidi-override;scrollbar-color: #29502c orange;scrollbar-width: thin; margin-left: 1cm;" >
+         <center style="text-align: justify;">
+             
+                <h5 style="margin-top:0px; color: #29502c;">Objets reconnus dans l'image ({{ detected|length}})</h5>
+                {% for obj in detected%}
+                        <article style="text-align: justify;">
+                            <div >
+                                <h6><a href="{% url 'objectd:show' id=obj.id %}" style="color: black;">{{obj.Nom | upper}}</a></h6>
+                            </div>
+                            
+                            <p>{{obj.Description|truncatewords:35}}</p>
+            
+                            <p><a href="{% url 'objectd:show' id=obj.id %}" style="color: #d4941c;">Lire la suite</a></p>
+                        </article>
+            
+                
+                
+                        {% if not forloop.last %}
+                        <hr>
+                        {% endif %}
+            
+                    {% empty %}
+                        Sorry Aucun objets reconnus...
+                {% endfor %}
+         </center>
+        </div>
+    </div>
+    <div class="col-6" style="margin-left:2cm; border-left-width: 5px;    border-left-color: whitesmoke;  color:#29502c ;">
+        <h2>Sélectionnez une image</h2>
+        <br>
+        <div id="formulaire">
+            <form method="post" enctype="multipart/form-data" style="color: black;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="Envoyer">
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+
+{% else %}
+<!-- 
+<div class="d-flex" style="margin-top: 1cm;  text-align: justify;">
+    <div class="col-6 scrollbar scrollbar-success text-justify" style="color: black; font-weight: normal; text-align:left; ">
+        <div class="overflow-auto text-justify" style="height: 250px; direction: rtl;unicode-bidi: bidi-override;scrollbar-color: #29502c orange;scrollbar-width: thin; margin-left: 1cm;" >
+         <center style="text-align: justify;">
+             
+                <h5 style="margin-top:0px; color: #29502c;">Objets reconnus dans l'image ({{ detected|length}})</h5>
+                {% for obj in detected%}
+                        <article style="text-align: justify;">
+
+                                <h6><a href="{% url 'objectd:show' id=obj.id %}" style="color: black;">{{obj.Nom | upper}}</a></h6>
+
+                            
+                            <p>{{obj.Description|truncatewords:35}}</p>
+            
+                            <p><a href="{% url 'objectd:show' id=obj.id %}">Lire la suite</a></p>
+                        </article>
+            
+                
+                
+                        {% if not forloop.last %}
+                        <hr>
+                        {% endif %}
+            
+                    {% empty %}
+                    <article>
+                              <a href="{% url 'objectd:index' %}" style="color:black">Mais, vous pouvez visiter tous les Objets Ici.....</a>     
+                    </article>
+                {% endfor %}
+         </center>
+        </div>
+    </div>
+    <div class="col-6" style="margin-left:2cm; border-left-width: 5px;    border-left-color: whitesmoke;  color:#29502c ;">
+        <h2>Sélectionnez une image</h2>
+        <br>
+        <div id="formulaire">
+            <form method="post" enctype="multipart/form-data" style="color: black;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="Envoyer">
+            </form>
+        </div>
+    </div>
+</div> -->
+
+{% endif %}
+
+<h6 ><a href="{% url 'objectd:index' %}" style="color: rgb(212, 148, 28);;">Visitez tous les Objets.....</a></h6>
+
+<style>
+    
+.scrollbar-success::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-success::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-success::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #00C851;
+}
+
+.scrollbar-success {
+  scrollbar-color: #00C851 #F5F5F5;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark bg-dark" style="margin-bottom: 1cm;">
+    <div class="container-fluid">
+    <h2 class="brand font-weight-bold" style="color:white ; font-weight:bold"> Kamites</h2>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button> -->
+    
+    <div class="d-flex justify-content-end">
+        <ul class="d-flex justify-content-end">
+            <li class="nav-item"><a class="nav-link nav-link-1 font-weight-bold" aria-current="page" href="{% url 'home' %}" style="color:#09ec1c ; font-weight:bold">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-2 font-weight-bold" href="{% url 'objectd:index' %}" style="color:yellow ; font-weight:bold">Objets</a</li>
+            <li class="nav-item"><a class="nav-link nav-link-3 font-weight-bold" href="{% url 'about' %}" style="color:orange ; font-weight:bold">About</a</li>
+            <li class="nav-item"><a class="nav-link nav-link-4 font-weight-bold" href="{% url 'contacts' %}" style="color:red ; font-weight:bold">Contact</a</li>
+        </ul>
+    </div>
+    </div>
+</nav>
